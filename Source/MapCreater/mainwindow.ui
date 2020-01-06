@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>720</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>AGV地图制作器</string>
+  </property>
+  <property name="statusTip">
+   <string>AGV地图制作器V3.0</string>
+  </property>
+  <property name="whatsThis">
+   <string>搭配AGV调度系统使用的地图环境制作器应用程序</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="statusTip">
+       <string>地图绘制区域</string>
+      </property>
+      <property name="whatsThis">
+       <string>用以绘制地图的窗口</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>文件(&amp;File)</string>
+    </property>
+    <addaction name="actionNewFile"/>
+    <addaction name="actionOpenFile"/>
+    <addaction name="separator"/>
+    <addaction name="actionSaveFile"/>
+    <addaction name="actionSaveAs"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>视图(&amp;View)</string>
+    </property>
+    <widget class="QMenu" name="menuRelation">
+     <property name="title">
+      <string>关系视图(&amp;Relation)</string>
+     </property>
+     <addaction name="actionRoad"/>
+     <addaction name="actionTraffic"/>
+     <addaction name="actionQueue"/>
+    </widget>
+    <addaction name="actionAttribute"/>
+    <addaction name="actionObject"/>
+    <addaction name="actionTool"/>
+    <addaction name="actionToolBar"/>
+    <addaction name="actionStatusBar"/>
+    <addaction name="menuRelation"/>
+   </widget>
+   <widget class="QMenu" name="menuTool">
+    <property name="title">
+     <string>工具(&amp;Tool)</string>
+    </property>
+    <widget class="QMenu" name="menuTrack">
+     <property name="title">
+      <string>磁轨(&amp;Track)</string>
+     </property>
+     <addaction name="actionLine"/>
+     <addaction name="actionArc"/>
+    </widget>
+    <addaction name="actionRFID"/>
+    <addaction name="actionWorker"/>
+    <addaction name="actionRester"/>
+    <addaction name="actionCharger"/>
+    <addaction name="menuTrack"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>帮助(&amp;Help)</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuView"/>
+   <addaction name="menuTool"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QDockWidget" name="dockToolBox">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>160</width>
+     <height>143</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>524287</width>
+     <height>524287</height>
+    </size>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>工具窗口(Tool View)</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QToolBox" name="toolBox">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="cursor">
+        <cursorShape>ArrowCursor</cursorShape>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Plain</enum>
+       </property>
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <widget class="QWidget" name="toolBase">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>145</width>
+          <height>66</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <attribute name="label">
+         <string>基础(Base)</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="tButRFID">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>地标卡(RFID)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1个RFID地标卡图标</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建RFID地标卡图标的按钮</string>
+           </property>
+           <property name="text">
+            <string>RFID地标卡(RFID Mark)</string>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonIconOnly</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="tButTrackLine">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>直线磁轨(Line)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1条直线磁轨</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建直线磁轨的按钮</string>
+           </property>
+           <property name="text">
+            <string>直线磁轨(Line Track)</string>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="tButTrackArc">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>弧线磁轨(Arc)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1条弧线磁轨</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建弧线磁轨的按钮</string>
+           </property>
+           <property name="text">
+            <string>弧线磁轨(Arc Track)</string>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="toolStation">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>160</width>
+          <height>66</height>
+         </rect>
+        </property>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <attribute name="label">
+         <string>工站(Station)</string>
+        </attribute>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QToolButton" name="tButWorker">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>工作站(Worke Station)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1个工作站图标</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建工作站图标的选项</string>
+           </property>
+           <property name="text">
+            <string>工作站(Work Station)</string>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="tButRester">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>待机站(Rest Station)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1个待机站图标</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建待机站图标的按钮</string>
+           </property>
+           <property name="text">
+            <string>待机站(Rest Station)</string>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QToolButton" name="tButCharger">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="toolTip">
+            <string>充电站(Charge Station)</string>
+           </property>
+           <property name="statusTip">
+            <string>创建1个充电站图标</string>
+           </property>
+           <property name="whatsThis">
+            <string>用以创建充电站图标的按钮</string>
+           </property>
+           <property name="text">
+            <string>充电站(Charger Station)</string>
+           </property>
+           <property name="autoRepeat">
+            <bool>false</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>false</bool>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockObjectView">
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>对象窗口(Object View)</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_4">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTreeView" name="treeObjectView">
+       <property name="statusTip">
+        <string>显示当前包含的所有图标列表</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QDockWidget" name="dockAttributeView">
+   <property name="contextMenuPolicy">
+    <enum>Qt::DefaultContextMenu</enum>
+   </property>
+   <property name="floating">
+    <bool>false</bool>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="windowTitle">
+    <string>属性窗口(Attribute View)</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_5">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="QTableWidget" name="tableAttribute">
+       <property name="statusTip">
+        <string>显示图标的详细属性信息</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="sizeGripEnabled">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <action name="actionNewFile">
+   <property name="text">
+    <string>新建(&amp;New)</string>
+   </property>
+   <property name="statusTip">
+    <string>清除当前的内容，并新建一个空白的地图文件</string>
+   </property>
+   <property name="whatsThis">
+    <string>用于新建地图文件的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
+   </property>
+  </action>
+  <action name="actionOpenFile">
+   <property name="text">
+    <string>打开(&amp;Open)</string>
+   </property>
+   <property name="toolTip">
+    <string>打开(Open)</string>
+   </property>
+   <property name="statusTip">
+    <string>清除当前内容，并加载新的文件内容</string>
+   </property>
+   <property name="whatsThis">
+    <string>用于加载新的文件的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionSaveFile">
+   <property name="text">
+    <string>保存(&amp;Save)</string>
+   </property>
+   <property name="toolTip">
+    <string>保存(Save)</string>
+   </property>
+   <property name="statusTip">
+    <string>将当前的内容保存至指定的文件内</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以保存内容的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionSaveAs">
+   <property name="text">
+    <string>另存为(Save&amp;As)</string>
+   </property>
+   <property name="toolTip">
+    <string>另存为(SaveAs)</string>
+   </property>
+   <property name="statusTip">
+    <string>将当前内容保存至新的文件内</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以将当前的内容保存至新的文件的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+A</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>退出(&amp;Exit)</string>
+   </property>
+   <property name="toolTip">
+    <string>退出(Exit)</string>
+   </property>
+   <property name="statusTip">
+    <string>退出应用程序</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以退出程序的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+E</string>
+   </property>
+  </action>
+  <action name="actionAttribute">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>属性窗口(&amp;Attribute)</string>
+   </property>
+   <property name="toolTip">
+    <string>属性窗口(Attribute)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏属性窗口</string>
+   </property>
+   <property name="whatsThis">
+    <string>显示或隐藏属性窗口的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+A</string>
+   </property>
+  </action>
+  <action name="actionObject">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>对象窗口(&amp;Object)</string>
+   </property>
+   <property name="toolTip">
+    <string>对象窗口(Object)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏对象窗口</string>
+   </property>
+   <property name="whatsThis">
+    <string>显示或隐藏对象窗口的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+O</string>
+   </property>
+  </action>
+  <action name="actionTool">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>工具窗口(&amp;Tool)</string>
+   </property>
+   <property name="toolTip">
+    <string>工具窗口(Tool)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏工具窗口</string>
+   </property>
+   <property name="whatsThis">
+    <string>显示或隐藏工具窗口的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+T</string>
+   </property>
+  </action>
+  <action name="actionToolBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>工具栏(&amp;ToolBar)</string>
+   </property>
+   <property name="toolTip">
+    <string>工具栏(ToolBar)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏工具栏</string>
+   </property>
+   <property name="whatsThis">
+    <string>显示或隐藏工具栏的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+B</string>
+   </property>
+  </action>
+  <action name="actionStatusBar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>状态栏(&amp;StatusBar)</string>
+   </property>
+   <property name="toolTip">
+    <string>状态栏(StatusBar)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏状态栏</string>
+   </property>
+   <property name="whatsThis">
+    <string>显示或隐藏状态栏的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionRFID">
+   <property name="text">
+    <string>地标卡(&amp;RFID)</string>
+   </property>
+   <property name="toolTip">
+    <string>地标卡(RFID)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1个RFID地标卡图标</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建RFID地标卡图标的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
+   </property>
+  </action>
+  <action name="actionWorker">
+   <property name="text">
+    <string>工作站(&amp;Worker)</string>
+   </property>
+   <property name="toolTip">
+    <string>工作站(Worker)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1个工作站图标</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建工作站图标的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+W</string>
+   </property>
+  </action>
+  <action name="actionRester">
+   <property name="text">
+    <string>待机站(&amp;Rester)</string>
+   </property>
+   <property name="toolTip">
+    <string>待机站(Rester)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1个待机站图标</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建待机站图标的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+R</string>
+   </property>
+  </action>
+  <action name="actionCharger">
+   <property name="text">
+    <string>充电站(&amp;Charger)</string>
+   </property>
+   <property name="toolTip">
+    <string>充电站(Charger)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1个充电站图标</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建充电站图标的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+C</string>
+   </property>
+  </action>
+  <action name="actionLine">
+   <property name="text">
+    <string>直线(&amp;Line)</string>
+   </property>
+   <property name="toolTip">
+    <string>直线(Line)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1条直线磁轨</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建直线磁轨的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+L</string>
+   </property>
+  </action>
+  <action name="actionArc">
+   <property name="text">
+    <string>弧线(&amp;Arc)</string>
+   </property>
+   <property name="toolTip">
+    <string>弧线(Arc)</string>
+   </property>
+   <property name="statusTip">
+    <string>创建1条弧线磁轨</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以创建弧线磁轨的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+A</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>关于(&amp;About)</string>
+   </property>
+   <property name="toolTip">
+    <string>关于(About)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示应用程序说明信息</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以显示应用程序说明信息的选项</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Alt+A</string>
+   </property>
+  </action>
+  <action name="actionRoad">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>路径关系(&amp;Road)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏地标卡之间的路径关系图</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以显示或隐藏地标卡之间的路径关系图</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+R</string>
+   </property>
+  </action>
+  <action name="actionTraffic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>交通管制关系(&amp;Traffic)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏地标卡之间的交通管制关系图</string>
+   </property>
+   <property name="whatsThis">
+    <string>用以显示或隐藏地标卡之间的交通管制关系图</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+C</string>
+   </property>
+  </action>
+  <action name="actionQueue">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>队列关系(&amp;Queue)</string>
+   </property>
+   <property name="statusTip">
+    <string>显示或隐藏待机站之间的队列关系图</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+Q</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <Window hight="600" width="1666" x="154" y="147"/>
+    <Menu Road="1" Queue="0" ToolBox="1" Attribute="1" StatusBar="1" Traffic="1" Object="1" ToolBar="1"/>
+    <DockTool hight="533" area="1" width="831" floating="0" x="0" y="45"/>
+    <DockObject hight="265" area="2" width="831" floating="0" x="835" y="45"/>
+    <DockAttribute hight="264" area="2" width="831" floating="0" x="835" y="314"/>
+</config>
